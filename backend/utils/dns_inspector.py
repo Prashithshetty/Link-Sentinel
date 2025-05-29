@@ -1,7 +1,7 @@
 import dns.resolver
 import socket
-import geoip2.database
 import whois
+import requests
 from urllib.parse import urlparse
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
@@ -149,17 +149,26 @@ class DNSInspector:
         """Get geolocation information for the domain"""
         try:
             ip = socket.gethostbyname(domain)
-            # Note: You need to download the GeoLite2 database and specify the correct path
-            reader = geoip2.database.Reader('GeoLite2-City.mmdb')
-            response = reader.city(ip)
             
-            return {
-                "country": response.country.name,
-                "city": response.city.name,
-                "latitude": response.location.latitude,
-                "longitude": response.location.longitude,
-                "timezone": response.location.time_zone
-            }
+            # Use a free IP API service instead of GeoLite2
+            loop = asyncio.get_event_loop()
+            response = await loop.run_in_executor(
+                self.executor,
+                lambda: requests.get(f'http://ip-api.com/json/{ip}')
+            )
+            
+            if response.status_code == 200:
+                data = response.json()
+                return {
+                    "country": data.get('country'),
+                    "city": data.get('city'),
+                    "latitude": data.get('lat'),
+                    "longitude": data.get('lon'),
+                    "timezone": data.get('timezone'),
+                    "isp": data.get('isp'),
+                    "org": data.get('org')
+                }
+            return {"error": "Could not fetch geolocation data"}
         except Exception as e:
             return {"error": f"Geolocation lookup failed: {str(e)}"}
 
