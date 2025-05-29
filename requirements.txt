@@ -1,0 +1,11 @@
+Flask==2.0.1
+requests==2.26.0
+dnspython==2.1.0
+python-whois==0.7.3
+pyOpenSSL==20.0.1
+geoip2==4.2.0
+validators==0.18.2
+pyppeteer==1.0.2
+shodan==1.28.0
+aiohttp==3.8.1
+python-dotenv==0.19.0
