@@ -15,7 +15,6 @@ Link Sentinel is a comprehensive web application security analyzer that helps us
   - Complete DNS record inspection (A, AAAA, MX, NS, TXT)
   - WHOIS information retrieval and validation
   - DNSSEC configuration verification
-  - Geographic location detection
   - DNS security scoring
 
 - **Browser Security Analysis**
@@ -47,7 +46,6 @@ Link Sentinel is a comprehensive web application security analyzer that helps us
 - pip (Python package installer)
 - Node.js (for frontend dependencies)
 - Shodan API key
-- GeoLite2 database
 
 ## Installation
 
@@ -73,10 +71,6 @@ Create a `.env` file in the root directory with the following content:
 ```
 SHODAN_API_KEY=your_shodan_api_key_here
 ```
-
-5. Install the GeoLite2 database:
-- Download the GeoLite2 City database from MaxMind
-- Place the `GeoLite2-City.mmdb` file in the project root directory
 
 ## Usage
 
@@ -136,7 +130,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - [Shodan](https://www.shodan.io/) for server intelligence
-- [MaxMind](https://www.maxmind.com/) for GeoIP database
 - Open source security tools and libraries
 
 ## Disclaimer
