@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <section class="url-input-section">
+        <div class="input-container">
+            <input type="url" id="urlInput" placeholder="Enter website URL to analyze..." required>
+            <button id="analyzeBtn">Analyze</button>
+        </div>
+        <div id="loadingIndicator" class="loading-indicator hidden">
+            <div class="spinner"></div>
+            <p>Analyzing website security...</p>
+        </div>
+    </section>
+
+    <section id="resultsSection" class="results-section hidden">
+        <div class="summary-card">
+            <h2>Analysis Summary</h2>
+            <div id="verdictBadge" class="verdict-badge"></div>
+            <div id="summaryContent"></div>
+        </div>
+
+        <div class="detailed-results">
+            <div class="result-tabs">
+                <button class="tab-btn active" data-tab="security">Security Analysis</button>
+                <button class="tab-btn" data-tab="dns">DNS Information</button>
+                <button class="tab-btn" data-tab="server">Server Details</button>
+                <button class="tab-btn" data-tab="recommendations">Recommendations</button>
+            </div>
+
+            <div class="tab-content">
+                <div id="securityTab" class="tab-pane active">
+                    <div class="risk-meter">
+                        <h3>Risk Assessment</h3>
+                        <div id="riskMeter"></div>
+                        <p id="riskScore"></p>
+                    </div>
+                    <div class="security-details">
+                        <h3>Security Findings</h3>
+                        <div id="securityFindings"></div>
+                    </div>
+                </div>
+
+                <div id="dnsTab" class="tab-pane">
+                    <div class="dns-records">
+                        <h3>DNS Records</h3>
+                        <div id="dnsRecords"></div>
+                    </div>
+                    <div class="domain-info">
+                        <h3>Domain Information</h3>
+                        <div id="domainInfo"></div>
+                    </div>
+                </div>
+
+                <div id="serverTab" class="tab-pane">
+                    <div class="server-info">
+                        <h3>Server Information</h3>
+                        <div id="serverInfo"></div>
+                    </div>
+                    <div class="vulnerabilities">
+                        <h3>Vulnerabilities</h3>
+                        <div id="vulnerabilitiesList"></div>
+                    </div>
+                </div>
+
+                <div id="recommendationsTab" class="tab-pane">
+                    <div class="recommendations-list">
+                        <h3>Security Recommendations</h3>
+                        <div id="recommendationsList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="errorMessage" class="error-message hidden">
+        <p></p>
+        <button class="close-btn">&times;</button>
+    </div>
+</div>
+{% endblock %}
