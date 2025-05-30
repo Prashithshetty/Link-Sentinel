@@ -125,4 +125,3 @@ Link Sentinel is a comprehensive web application security analyzer built with a 
 - Shodan API access
 - DNS resolution capabilities
 - SSL verification tools
-- GeoIP database
