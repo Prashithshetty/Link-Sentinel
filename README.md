@@ -5,19 +5,21 @@ Link Sentinel is a comprehensive web application security analyzer that helps us
 ## Features
 
 - **URL Validation and Analysis**
-  - Domain age verification
-  - SSL certificate validation
-  - Suspicious TLD detection
-  - Redirect chain analysis
+  - Domain age verification through WHOIS
+  - SSL certificate validation and chain analysis
+  - Suspicious TLD detection with risk categorization
+  - Redirect chain tracking and analysis
+  - Security header verification
 
 - **DNS Analysis**
   - Complete DNS record inspection (A, AAAA, MX, NS, TXT)
-  - WHOIS information retrieval
-  - Reverse DNS lookup
+  - WHOIS information retrieval and validation
+  - DNSSEC configuration verification
   - Geographic location detection
+  - DNS security scoring
 
 - **Browser Security Analysis**
-  - Headless browser inspection using pyppeteer
+  - Headless browser inspection
   - Security headers verification
   - Form submission target analysis
   - JavaScript execution monitoring
@@ -25,21 +27,27 @@ Link Sentinel is a comprehensive web application security analyzer that helps us
 
 - **Server Intelligence**
   - Shodan integration for vulnerability scanning
-  - Open ports detection
-  - Server technology stack analysis
-  - Historical security incidents check
+  - Port and service identification
+  - Technology stack analysis
+  - SSL/TLS configuration assessment
+  - Service misconfiguration detection
+  - Historical security incident tracking
 
-- **Comprehensive Reporting**
-  - Overall safety verdict
-  - Detailed security analysis
-  - Risk assessment scoring
-  - Actionable recommendations
+- **Security Assessment**
+  - Overall safety verdict with confidence level
+  - Component-wise risk scoring
+  - Prioritized security recommendations
+  - Critical issue identification
+  - Detailed technical analysis
+  - Custom risk scoring algorithm
 
 ## Prerequisites
 
 - Python 3.8 or higher
 - pip (Python package installer)
-- Node.js (for pyppeteer)
+- Node.js (for frontend dependencies)
+- Shodan API key
+- GeoLite2 database
 
 ## Installation
 
@@ -84,7 +92,7 @@ http://localhost:5000
 
 3. Enter a URL in the input field and click "Analyze" to start the security analysis.
 
-## API Endpoints
+## API Documentation
 
 ### Analyze URL
 - **Endpoint**: `/api/analyze`
@@ -95,21 +103,31 @@ http://localhost:5000
     "url": "https://example.com"
 }
 ```
-- **Response**: Comprehensive security analysis report
+- **Response**: Comprehensive security analysis report including:
+  - Overall safety verdict
+  - Component-wise risk scores
+  - Security issues by severity
+  - Prioritized recommendations
+  - Technical details
 
 ## Security Considerations
 
 - The application requires a Shodan API key for vulnerability scanning
 - Some features may be blocked by website security measures
 - Use responsibly and respect website terms of service
-- Do not use for malicious purposes
+- Regular updates recommended for security databases
+- API key rotation and secure storage required
 
 ## Contributing
 
 1. Fork the repository
-2. Create a new branch
-3. Make your changes
-4. Submit a pull request
+2. Create a feature branch
+3. Implement changes with tests
+4. Submit a pull request with documentation
+
+## Technical Documentation
+
+For detailed technical information about the system architecture, analysis process, and implementation details, please refer to [EXPLAIN.md](EXPLAIN.md).
 
 ## License
 
@@ -118,8 +136,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - [Shodan](https://www.shodan.io/) for server intelligence
-- [pyppeteer](https://github.com/pyppeteer/pyppeteer) for headless browser automation
 - [MaxMind](https://www.maxmind.com/) for GeoIP database
+- Open source security tools and libraries
 
 ## Disclaimer
 
